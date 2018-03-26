@@ -1,0 +1,19 @@
+@media (max-width: 768px) {
+
+
+    .mainSection{ padding-top: 40px;}
+    .formWrapper{ margin-top: 20px;}
+}
+
+@media (max-width: 640px) {
+    
+    header{text-align: center;}
+    header a{ display: inline-block;  }
+    .formWrapper{ padding: 0px;}
+    .formSection h3, .formSection h1, .subtext{ text-align: center;}
+    .formSection h1{ font-size: 44px;}
+    .formSection h3{ font-size: 28px;}
+    .formRow{ text-align: center;}
+    .applyButton{ display: inline-block;}
+    .formRow label{ width: 100%; float: left; text-align: left;}
+}
