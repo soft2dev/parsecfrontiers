@@ -7,11 +7,11 @@
     <section class="mainSection">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-6 col-lg-offset-3 formSection">
+			<div class="col-lg-6 formSection">
 				<div class="panel panel-login">
 					<div class="panel-heading">
 						<div class="row">
-							<div class="col-xs-6 ">
+							<div class="col-xs-6">
 								<a href="#" class="active" id="login-form-link">Users Login</a>
 							</div>
 							<div class="col-xs-6">
@@ -51,26 +51,29 @@
 									</form>
 								</section><!--Log In-->
 								<section id="register-form" role="form" style="display: none;">
-									<form>
+									<form method="POST" action="/handlelogin" id="userForm" data-toggle="validator">
+									{{ csrf_field() }}
 										<div class="formRow">
-											<input type="text"  id="signRegUsername" class="form-control" placeholder="Username" value="" required="true"/>
+										<input type="text"  id="signRegUsername" pattern="^[_A-z0-9]{1,}$"  class="form-control textFeild" name="signUsername" placeholder="Username" value="" required="true"/>
 										</div>  
 										<div class="formRow">
-											<input type="email"  id="signRegEmail" class="form-control" placeholder="Email Address" value="" required/>
+											<input type="email"  id="signRegEmail" class="form-control" placeholder="Email Address" name="signEmail" value="" required/>
 										</div>
 										<div class="formRow">
-											<input type="text" id="signRegMobileNumber" class="form-control" placeholder="Mobile Number" value="" required/>
+											<label for="phonenum">Phone Number (format: xxxx-xxx-xxxx):</label><br/>
+											<input type="text" id="signRegMobileNumber" class="form-control" pattern="^\d{4}-\d{3}-\d{4}$" name="signMobileNumber" placeholder="Mobile Number" value="" required/>
+										</div>	
+										<div class="formRow">
+											<!--<input type="password"  id="signRegPassword"  minlength="7" class="form-control" placeholder="Password" value="" required/>-->
+											<input type="password"  id="signRegPassword" class="form-control"  minlength="7" placeholder="Password" name="signPassword" value="" required/>
 										</div>
 										<div class="formRow">
-											<input type="password"  id="signRegPassword" class="form-control" placeholder="Password" value="" required/>
-										</div>
-										<div class="formRow">
-											<input type="password"  id="signRegConfirmPassword" class="form-control" placeholder="Confirm Password" value="" required/>
+											<input type="password"  id="signRegConfirmPassword" minlength="7"  class="form-control" placeholder="Confirm Password" value="" required/> <span class='message'></span>
 										</div>
 										<div class="formRow">
 											<div class="row">
 												<div class="col-sm-6 col-sm-offset-3">
-													<button id="btnRegister" class="form-control btn btn-register" >Signup Now</button>
+													<button id="btnRegister" class="form-control btn btn-register">Signup Now</button>
 												</div>
 											</div>
 										</div>
@@ -84,10 +87,13 @@
 		</div><!--row-->
 	</div><!--container-->
 </section><!--mainSection-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	 <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('members/js/bootstrap.min.js') !!}"></script>
     <script src="{!! asset('members/js/owl.carousel.js') !!}"></script>
     <script src="{!! asset('members/js/wow.min.js') !!}"></script>
+	 <script src="{!! asset('js/plugins/dataTables/datatables.min.js') !!}"></script>
+	 <script src="{!! asset('js/plugins/validate/jquery.validate.min.js') !!}"></script>
+	 
     <script>
     $(document).ready(function () {        
         $('#login-form-link').click(function(e) {

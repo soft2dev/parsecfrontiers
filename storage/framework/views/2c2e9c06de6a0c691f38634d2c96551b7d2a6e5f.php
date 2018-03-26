@@ -9,7 +9,7 @@
                         <h1>Aridrop Campaing</h1>
                         <div class="subtext">Apply now to get <span>1,500</span> parsec credits on may 1st</div>    
                             <div class="formWrapper">
-                                <form>
+                             
                                 <div class="formRow">
                                     <label>Your <span>Ethereum Wallet</span> Address</label>
                                     <input id="txt_wallet_address" type="text" class="textFeild" required/>
@@ -29,7 +29,7 @@
                                 <div class="formRow">
                                     <button id="btn_apply" class="applyButton">apply</button>
                                 </div>
-                                </form>
+                            
                             </div>
                     </div>
                 </div>

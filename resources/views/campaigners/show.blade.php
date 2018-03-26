@@ -34,7 +34,7 @@
                         "<td>{$campaigner->twitterAccount}</td>".
                         "<td>{$campaigner->telegramName}</td>".
                         "<td>{$campaigner->preTelegramName}</td>".
-                        "<td><a class='eEdit' data-toggle='modal' data-target='#camEditModal'>Edit</a>|<a><span class='eDelete'>Delete</span></a></td></tr>";
+                        "<td><a class='mEdit' data-toggle='modal' data-target='#camEditModal'>Edit</a>|<a><span class='mDelete'>Delete</span></a></td></tr>";
                         $i++;
                         }
                         echo $html;

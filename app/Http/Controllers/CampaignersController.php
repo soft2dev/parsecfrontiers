@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
-use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Campaigners;
@@ -12,8 +11,15 @@ class CampaignersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-    }
+        session_start();
+        if(!isset($_SESSION['login']) && empty($_SESSION['login'])) {
+            header('Location: /admin');
+              exit;
+        }else if($_SESSION["login"]!='parsec'){
+             header('Location: /admin');
+              exit;
+        }
+    }  
     /**
      * Display a listing of the resource.
      *

@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="{!! asset('members/css/responsive.css') !!}" />
 </head>
 <body>
-
   <!-- Wrapper-->
     <div id="wrapper">
         <!-- Page wraper -->

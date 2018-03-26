@@ -12,22 +12,23 @@
 */
 
 //Route::get('/', 'HomeController@index')->name("main");
-Auth::routes();
-
 Route::get('/', function () {
-    return view('auth.login');
-})->name('landing');
-    
+    return view('campaigners.create');
+});
+Route::get('/again', function () {
+    return view('campaigners.again');
+});
+Route::get('/admin', function () {
+    return view('users.create');
+});
 
-// Route::post('/login', 'HandleLoginController@handle')->name('login');
-// Route::get('/logout', 'HandleLoginController@logout')->name('logout');
-
+Route::post('/login', 'HandleLoginController@handle')->name('login');
+Route::get('/logout', 'HandleLoginController@logout')->name('logout');
+//Auth::routes();
 Route::resource('campaigners', 'CampaignersController');
 Route::resource('users', 'UsersController');    
-
-Auth::routes();
-
 Route::resource('handlelogin', 'HandleLoginController');    
-Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');
-Route::get('/home', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
+Route::resource('handleregisters', 'HandleRegisterController');
+
+
+

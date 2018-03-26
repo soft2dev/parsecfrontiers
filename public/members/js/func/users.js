@@ -1,9 +1,10 @@
 $(document).ready(function() { 
 //    $('#btnRegister').click(function() {
+//        $('.confirm').hide();
 //        if($('#signRegPassword').val()!=$('#signRegConfirmPassword').val()){
-//            $('#signRegPassword').css('background-color','red');
-//            $('#signRegConfirmPassword').css('background-color','red');
-//            alert("please confirm password");
+//            $('#signRegPassword').css('border-color','red');
+//            $('#signRegConfirmPassword').css('border-color','red');
+//            $('.confirm').show();
 //            return;
 //        }
 //        if(!$('#signRegUsername').val()) return;
@@ -25,7 +26,7 @@ $(document).ready(function() {
 //             }
 //         });
 //         $.ajax({
-//             url: "http://localhost:8000/handlelogin",
+//             url: "/handlelogin",
 //             method: "POST", 
 //             data: data,
 //             dataType: "json",
@@ -38,7 +39,7 @@ $(document).ready(function() {
 //                 }
 //             },
 //             error: function(xhr, status, errorThrown) {
-//                 alert('Please insert data');
+//                 alert('The email address is in use.');
 //             }
 //         });
 //     });
@@ -87,14 +88,13 @@ $(document).ready(function() {
             signPassword: $('#signPassword').val(),
             admin:'1'
         }
-        console.log(data);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         $.ajax({
-            url: "http://localhost:8000/users",
+            url: "/users",
             method: "POST", 
             data: data,
             dataType: "json",
@@ -138,7 +138,7 @@ $(document).ready(function() {
         });
         var id = $(this).parents('tr').attr('id');
         $.ajax({
-            url: "users",
+            url: "/users/destory",
             method: "DELETE",
             dataType: "json",
             data: { id: id },
@@ -185,14 +185,13 @@ $(document).ready(function() {
        else{
             $('#signEditMobileNumber').css('border-color','#1ab394');
         } 
-        console.log(data);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         $.ajax({
-            url: "http://localhost:8000/users/update",
+            url: "/users/update",
             method: "PUT", 
             data: data,
             dataType: "json",
@@ -208,4 +207,5 @@ $(document).ready(function() {
             }
         });
     });
+    
 })

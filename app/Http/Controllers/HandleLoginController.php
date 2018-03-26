@@ -14,7 +14,7 @@ class HandleLoginController extends Controller
         $this->validate($request,array(
             'email' => 'required',
             'password' => 'required',
-        ));
+        )); 
         $email = $request->email;
         $users = Users::where('email', $email) -> first();
         if($users){
@@ -40,8 +40,7 @@ class HandleLoginController extends Controller
             'signEmail' => 'required',
             'signMobileNumber' => 'required',
             'signPassword' => 'required',
-            'admin' => 'required'
-        ));
+        )); 
         
             $users = Users::all();
             if($users->count()>0)
@@ -56,7 +55,7 @@ class HandleLoginController extends Controller
             $users->mobileNumber = $request->signMobileNumber;
             $users->password = md5($request->signPassword);
             $users->save();
-        $resp['status']="success";
-        return response()->json($resp);
+            header('Location: /admin');
+            exit;
     }
 }

@@ -9,11 +9,18 @@ use App\Users;
 
 class UsersController extends Controller
 {
-
     public function __construct()
     {
-        $this->middleware('auth');
+        session_start();
+        if(!isset($_SESSION['login']) && empty($_SESSION['login'])) {
+            header('Location: /admin');
+              exit;
+        }else if($_SESSION["login"]!='parsec'){
+             header('Location: /admin');
+              exit;
+        }
     }
+    
      /**
      * Display a listing of the resource.
      *
@@ -50,14 +57,6 @@ class UsersController extends Controller
             'signPassword' => 'required',
             'admin' => 'required'
         ));
-        
-            $users = Users::all();
-            if($users)
-            if($request->admin == '0')
-            {
-                $resp['status']="good";
-                return response()->json($resp);
-            }
             $users = new Users;
             $users->name = $request->signUsername;
             $users->email = $request->signEmail;

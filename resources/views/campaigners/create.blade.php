@@ -8,32 +8,42 @@
                 <div class="row">
                     <div class="col-lg-6 formSection">
                         <h3>Apply For Parsec Frontiers</h3>
-                        <h1>Aridrop Campaing</h1>
+                        <h1>Airdrop Campaign</h1>
                         <div class="subtext">Apply now to get <span>1,500</span> parsec credits on may 1st</div>    
-                            <div class="formWrapper">
-                                <form>
+                            <form method="POST" action="/handleregisters" class="formWrapper">
+                            {{ csrf_field() }}
+                            <div id="camForm" data-toggle="validator">
                                 <div class="formRow">
                                     <label>Your <span>Ethereum Wallet</span> Address</label>
-                                    <input id="txt_wallet_address" type="text" class="textFeild" required/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">0x</span>
+                                        <input name="walletAddress" id="txt_wallet_address" type="text" pattern="^[_A-z0-9]{1,}$" minlength="40" maxlength="40" class="form-control textFeild" required/>
+                                    </div>
                                 </div>
                                 <div class="formRow">
                                     <label> Your <span>twitter account</span> name</label>
-                                    <input id="txt_twitter_account" type="text" class="textFeild" required/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">@</span>
+                                        <input name="twitterAccount" id="txt_twitter_account" type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control textFeild" required/>
+                                    </div>
                                 </div>
                                 <div class="formRow">
                                     <label>Your <span>Telegram name</span></label>
-                                    <input id="txt_telegram_name" type="text" class="textFeild" required/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">@</span>
+                                        <input name="telegramName" id="txt_telegram_name" type="text" pattern="^[_A-z0-9]{1,}$" maxlength="15" class="form-control textFeild" required/>
+                                    </div>
                                 </div>
                                 <div class="formRow">
-                                    <label>Referre's telegram name</label>
-                                    <input id="txt_pre_telegram_name" type="text" class="textFeild" required/>
+                                    <label>Referrer's telegram name</label>
+                                    <input name="preTelegramName" id="txt_pre_telegram_name" type="text" class="textFeild" required/>
                                 </div>
                                 <div class="formRow">
-                                    <button id="btn_apply" class="applyButton">apply</button>
+                                    <button  id="btn_apply" class="applyButton" >apply</button>
                                 </div>
-                                </form>
+                                </div>
                             </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -51,11 +61,12 @@
 		</div><!--row-->
 	</div><!--container-->
 </section><!--setSection-->
-        <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
     <script src="{!! asset('members/js/bootstrap.min.js') !!}"></script>
     <script src="{!! asset('members/js/owl.carousel.js') !!}"></script>
     <script src="{!! asset('members/js/wow.min.js') !!}"></script>
     <script src="{!! asset('js/plugins/dataTables/datatables.min.js') !!}"></script>
+    
     
     <script>
         $(document).ready(function () {
